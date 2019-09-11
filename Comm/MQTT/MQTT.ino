@@ -33,6 +33,7 @@ void callback(char* topic, byte* message, unsigned int length)
     Serial.print(topic);
     Serial.print("Mensaje: ");
     String incoming;
+
     for (int i = 0; i < length; i++)
     {
          Serial.print((char)message[i]);
@@ -82,10 +83,10 @@ void loop()
     if (now - lasMsg > 3000)
     {
         /* code of read data FotoCell */
-        dtostrf();
-        int LDRReading = analogRead(pinCell); 
-        Serial.println(LDRReading);
-        client.publish("esp32/pinCell/output", LDRReading);
+        char value[8];
+        dtostrf(analogRead(pinCell),1, 2, value);
+        //dtostrf()
+        client.publish("esp32/fotocell/output", value);
     }
     
 }
