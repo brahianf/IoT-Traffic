@@ -1,4 +1,4 @@
-#if defined(ESP32)
+#if defined(ESP8266)
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #else
@@ -11,30 +11,17 @@
 
 const int PIN_AP = 2;
 
-void configModeCallback(wifiManager *myWiFiManager)
-{
-    Serial.println("Modo de configuración...");
-    Serial.println(WiFi.softAPIP());
-    serial.println(myWiFiManager->getConfigPortalSSID());
-}
-
-void saveConfigCallback()
-{
-    Serial.println("Configuración guardada"); 
-    Serial.println(WiFi.softAPIP());   
-}
-
 void setup()
 {
     Serial.begin(115200);
-    pinMode(PIN_AP, INPUT);
+    pinMode(PIN_AP,INPUT);
 
     WiFiManager wifiManager;
 
-    wifiManager.setAPCallback(configModeCallback);
-    wifiManager.setSaveConfigCallback(configModeCallback);
+   // wifiManager.setAPCallback(configModeCallback);
+   // wifiManager.setSaveConfigCallback(configModeCallback);
     
-    wifiManager.autoConnect("HHESP32","1234")
+    wifiManager.autoConnect("HHESP32","1234");
 
 }
 
@@ -51,9 +38,22 @@ void loop()
          }
          
      }
-     
-
 }
+     
+/*void configModeCallback(wifiManager *myWiFiManager)
+{
+    Serial.println("Modo de configuración...");
+    Serial.println(WiFi.softAPIP());
+    serial.println(myWiFiManager->getConfigPortalSSID());
+}
+
+void saveConfigCallback()
+{
+    Serial.println("Configuración guardada"); 
+    Serial.println(WiFi.softAPIP());   
+}
+
+}*/
 
 
 
