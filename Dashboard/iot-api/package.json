@@ -9,7 +9,7 @@
         "lint": "standard"
     },
     "dependencies": {
-        "debug": "^2.6.8",
+        "debug": "^3.1.0",
         "express": "^4.15.3",
         "express-asyncify": "^1.0.0",
         "iot-agent": "file:../iot-agent",
